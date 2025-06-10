@@ -27,8 +27,8 @@ const Navbar = () => {
 
   return (
     <div className={cn("w-full lg:py-4 py-2 fixed duration-300 md:top-0 md:left-0 max-md:bottom-0 max-md:border-t z-50 bg-background flex justify-between items-center border-b px-4", isScroll && "shadow-md dark:shadow-slate-600 shadow-black/10")}>
-      <Link href={'/'} className="md:block hidden">
-        Logo
+      <Link href={'/'} className="md:block hidden text-2xl font-semibold">
+        Khamroyev
       </Link>
 
       <div className="flex items-center justify-center gap-3 max-md:px-2 max-md:w-full">

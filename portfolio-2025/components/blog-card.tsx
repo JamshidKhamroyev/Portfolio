@@ -1,20 +1,30 @@
+"use client"
+
 import { CalendarDays, ExternalLink, FileText, ImageOff } from "lucide-react"
 import CurrentImage from "./current-image"
+import { IBlog } from "@/types"
+import Public from "@/hooks/use-public"
+import { format } from "date-fns"
+import { motion } from "framer-motion"
 
-interface BlogCardProps {
-  title: string
-  description: string
-  createdAt: string
-  image?: string
-  link?: string
-}
+const BlogCard = ({ title, description, createdAt, image, link }: IBlog) => {
+  const usePublic = Public()
 
-const BlogCard = ({ title, description, createdAt, image, link }: BlogCardProps) => {
   return (
-    <div className="bg-white dark:bg-background dark:border dark:border-gray-600 p-2 rounded-md shadow-md overflow-hidden hover:shadow-xl transition-all flex flex-col h-full">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      whileHover={{
+        scale: 1.02,
+        boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.1)",
+        transition: { duration: 0.3 },
+      }}
+      className="bg-white dark:bg-background border-gray-400 border dark:border-gray-600 p-2 rounded-md shadow-md overflow-hidden flex flex-col h-full"
+    >
       {image ? (
         <CurrentImage
-          src={image}
+          src={`${usePublic.url}/api/blog-images/${image}`}
           alt={title}
           className="w-full h-48 object-cover bg-slate-200 dark:bg-slate-700"
         />
@@ -37,7 +47,8 @@ const BlogCard = ({ title, description, createdAt, image, link }: BlogCardProps)
 
         <div className="pt-3">
           <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
-            <CalendarDays size={14} /> {createdAt}
+            <CalendarDays size={14} />
+            <span>{format(createdAt, "dd-MMMM")}</span>
           </p>
 
           {link && (
@@ -52,7 +63,7 @@ const BlogCard = ({ title, description, createdAt, image, link }: BlogCardProps)
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

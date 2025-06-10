@@ -4,6 +4,7 @@ require("dotenv").config()
 const app = express()
 const path = require("path")
 const { default: helmet } = require("helmet")
+const cors = require("cors")
 const { default: rateLimit } = require("express-rate-limit")
 
 const BlogRouter = require("./routers/blog-router") 
@@ -22,6 +23,7 @@ const limiter = rateLimit({
 
 app.use(limiter)
 app.use(helmet())
+app.use(cors({ origin: process.env.FRONTEND_URL}))
 app.use(express.json({ limit: "5mb" }))
 app.use(express.urlencoded({ extended: true }))
 // Routers
