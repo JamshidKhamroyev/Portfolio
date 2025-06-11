@@ -16,33 +16,34 @@ const ProjectCard = ({ title, description, image, createdAt, githubLink, demoLin
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       whileHover={{
-        scale: 1.02,
         boxShadow: "0px 12px 25px rgba(0, 0, 0, 0.1)",
         transition: { duration: 0.3 },
       }}
-      className="dark:bg-background border border-gray-400 p-4 rounded-sm text-white shadow-lg overflow-hidden flex flex-col h-full"
+      className="dark:bg-background border border-gray-400 text-white shadow-lg overflow-hidden flex flex-col h-full"
     >
       <CurrentImage
         src={`${usePublic.url}/api/projects-images/${image}`}
         alt={title}
-        className="w-full h-48 object-cover rounded-md"
+        className="w-full h-56 object-cover"
       />
 
-      <div className="space-y-4 border-t mt-4 pt-3 flex flex-col flex-1 justify-between">
-        <div className="flex items-center gap-2 text-sky-400 font-semibold text-lg">
-          <BadgeCheck size={18} /> {title}
-        </div>
+      <div className="space-y-4 p-2 border-t flex flex-col flex-1 justify-between">
+        <div>
+          <div className="flex items-center gap-2 text-sky-400 font-semibold text-lg">
+            <BadgeCheck size={18} /> {title}
+          </div>
 
-        <p className="line-clamp-3 text-justify dark:text-white text-black text-sm">
-          {description}
-        </p>
+          <p className="line-clamp-3 text-justify dark:text-white text-black text-sm">
+            {description}
+          </p>
+        </div>
 
         <div className="flex items-center text-xs gap-2 text-gray-700 dark:text-white">
           <CalendarDays size={16} />
           Created: {format(createdAt, "dd-MMM-yyyy")}
         </div>
 
-        {(githubLink || demoLink) && (
+        {(githubLink || demoLink) ? (
           <div className="flex gap-4 mt-2">
             {githubLink && (
               <a
@@ -65,7 +66,7 @@ const ProjectCard = ({ title, description, image, createdAt, githubLink, demoLin
               </a>
             )}
           </div>
-        )}
+        ) : <p className="dark:text-white text-slate-800 hover:underline cursor-pointer">No links</p>}
       </div>
     </motion.div>
   )

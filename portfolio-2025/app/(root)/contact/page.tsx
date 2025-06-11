@@ -41,7 +41,7 @@ const ContactPage = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Ismingizni kiriting"
-              className="w-full px-4 py-2 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-400"
+              className="w-full px-4 py-2 border focus:border-none rounded-md bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-400"
               required
             />
           </div>
@@ -55,7 +55,7 @@ const ContactPage = () => {
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Xabaringizni shu yerga yozing..."
               rows={5}
-              className="w-full px-4 py-2 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-400 resize-none"
+              className="w-full px-4 border focus:border-none py-2 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-400 resize-none"
               required
             />
           </div>

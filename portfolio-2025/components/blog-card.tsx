@@ -16,25 +16,24 @@ const BlogCard = ({ title, description, createdAt, image, link }: IBlog) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       whileHover={{
-        scale: 1.02,
         boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.1)",
         transition: { duration: 0.3 },
       }}
-      className="bg-white dark:bg-background border-gray-400 border dark:border-gray-600 p-2 rounded-md shadow-md overflow-hidden flex flex-col h-full"
+      className="bg-white dark:bg-background border-gray-400 border dark:border-gray-600 shadow-md overflow-hidden flex flex-col h-full"
     >
       {image ? (
         <CurrentImage
           src={`${usePublic.url}/api/blog-images/${image}`}
           alt={title}
-          className="w-full h-48 object-cover bg-slate-200 dark:bg-slate-700"
+          className="w-full h-56 object-cover bg-slate-200 dark:bg-slate-700"
         />
       ) : (
-        <div className="w-full h-48 bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-400 dark:text-slate-500">
+        <div className="w-full h-56 bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-400 dark:text-slate-500">
           <ImageOff size={32} />
         </div>
       )}
 
-      <div className="space-y-3 mt-3 px-1 flex flex-col justify-between flex-1">
+      <div className="space-y-3 p-2 flex flex-col justify-between flex-1">
         <div className="space-y-2">
           <h3 className="text-lg font-semibold text-sky-400 flex items-center gap-2">
             <FileText size={18} /> {title}
