@@ -5,6 +5,7 @@ import Sidebar from "@/components/sidebar/sidebar"
 import useAdmin from "@/hooks/use-admin"
 import NextTopLoader from "nextjs-toploader"
 import { ReactNode } from "react"
+import { ToastContainer } from "react-toastify"
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const admin = useAdmin()
@@ -17,7 +18,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
             <Sidebar />
           </div>
 
-          <div className="md:ml-[20.2vw]">
+          <div className="md:ml-[20vw]">
               <NextTopLoader  
                 color="#155dfc "
                 initialPosition={0.08}
@@ -29,6 +30,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
                 speed={200}
                 shadow="0 0 10px #2299DD,0 0 5px #2299DD"
               />
+              <ToastContainer />
             {children}
           </div>
         </div>

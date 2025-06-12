@@ -30,7 +30,7 @@ const data = [
 
 const HomePage = () => {
   return (
-    <div className="p-6 space-y-6 bg-slate-50 min-h-screen dark:bg-slate-900 text-slate-900 dark:text-white">
+    <div className="p-6 space-y-6 bg-slate-100 w-[80vw] min-h-screen dark:bg-slate-900 text-slate-900 dark:text-white">
       <h1 className="text-3xl font-bold flex items-center gap-2">
         <Smile /> Xush kelibsiz, Admin!
       </h1>
@@ -42,7 +42,7 @@ const HomePage = () => {
         <Card icon={<Settings />} title="Sozlamalar" value="OK" />
       </div>
 
-      <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-xl">
+      <div className="bg-white w-full dark:bg-slate-800 p-6 rounded-xl shadow-xl">
         <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
           <Activity /> Haftalik tashriflar statistikasi
         </h2>

@@ -43,7 +43,6 @@ class BlogController {
     
             await blogModel.findByIdAndDelete(id);
             res.json({ succes: true, message: "Blog and its image deleted successfully!" });
-    
         } catch (error) {
             res.status(400).json({ succes: false, message: error.message });
         }

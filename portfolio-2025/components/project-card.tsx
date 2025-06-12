@@ -1,6 +1,6 @@
 "use client"
 
-import { ExternalLink, Github, CalendarDays, FileText, BadgeCheck } from "lucide-react"
+import { ExternalLink, Github, CalendarDays, BadgeCheck } from "lucide-react"
 import CurrentImage from "./current-image"
 import { IProject } from "@/types"
 import { format } from "date-fns"
@@ -37,7 +37,6 @@ const ProjectCard = ({ title, description, image, createdAt, githubLink, demoLin
             {description}
           </p>
         </div>
-
         <div className="flex items-center text-xs gap-2 text-gray-700 dark:text-white">
           <CalendarDays size={16} />
           Created: {format(createdAt, "dd-MMM-yyyy")}

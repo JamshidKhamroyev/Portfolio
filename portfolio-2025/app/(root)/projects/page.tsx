@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import axios from "axios"
 import ProjectCard from "@/components/project-card"
 import { Button } from "@/components/ui/button"
@@ -16,7 +16,7 @@ const Projects = () => {
   const [loading, setLoading] = useState(false)
   const [hasMore, setHasMore] = useState(true)
 
-  const getProjects = async () => {
+  const getProjects = useCallback(async() => {
     setLoading(true)
     try {
       const { data } = await axios.get(`${usePublic.url}/api/project/get-all/${limit}`)
@@ -33,12 +33,11 @@ const Projects = () => {
     } finally {
       setLoading(false)
     }
-  }
+  }, [])
 
   useEffect(() => {
     getProjects()
-  }, [limit])
-  console.log(projects);
+  }, [limit, getProjects])
   
   return (
     <div className="container mx-auto px-4 py-20">
@@ -58,7 +57,7 @@ const Projects = () => {
           onClick={() => setLimit(prev => prev + 3)}
           disabled={loading || !hasMore}
         >
-          Yana ko'rish
+          Yana ko&apos;rish
           {loading && <Loader className="animate-spin h-5 w-5 ml-2" />}
         </Button>
       </div>

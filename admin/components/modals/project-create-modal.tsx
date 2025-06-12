@@ -1,49 +1,49 @@
 "use client";
 
-import blogModal from "@/hooks/use-blog-modal";
+import projectModal from "@/hooks/use-project-modal";
 import Modal from "../ui/modal";
 import { useState, ChangeEvent } from "react";
 import { Loader, PlusCircle, Upload } from "lucide-react";
 import { v4 } from "uuid";
 import axios from "axios";
 import useAdmin from "@/hooks/use-admin";
-import { IBlog } from "@/types";
+import { IProject } from "@/types";
 import Image from "next/image";
 
-const BlogCreateModal = ({ submitHandler }: { submitHandler: (data: IBlog) => void}) => {
-  const useCreateModal = blogModal();
+const ProjectCreateModal = ({ submitHandler }: { submitHandler: (data: IProject) => void }) => {
+  const useCreateModal = projectModal();
   const admin = useAdmin();
 
   const [title, setTitle] = useState("");
-  const [load, setLoad] = useState(false)
   const [description, setDescription] = useState("");
-  const [link, setLink] = useState("");
+  const [githubLink, setGithubLink] = useState("");
+  const [demoLink, setDemoLink] = useState("");
   const [newImage, setImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [load, setLoad] = useState(false);
 
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setLoad(true)
     const file = e.target.files?.[0];
     if (file) {
       setImage(file);
       setImagePreview(URL.createObjectURL(file));
     }
-    setLoad(false)
   };
 
   const handleSubmit = async () => {
-    setLoad(true)
+    setLoad(true);
     try {
       const formdata = new FormData();
       formdata.append("title", title);
       formdata.append("description", description);
-      formdata.append("link", link);
+      formdata.append("githubLink", githubLink);
+      formdata.append("demoLink", demoLink);
       if (newImage) {
         formdata.append("image", newImage);
       }
 
       const { data } = await axios.post(
-        `${admin.url}/api/blogs/create`,
+        `${admin.url}/api/projects/create`,
         formdata,
         {
           headers: {
@@ -53,19 +53,20 @@ const BlogCreateModal = ({ submitHandler }: { submitHandler: (data: IBlog) => vo
       );
 
       if (data.succes) {
-        submitHandler(data.data)
+        submitHandler(data.data);
         useCreateModal.onClose();
       }
     } catch (error) {
       console.error("Xatolik:", error);
-    }finally{
-        setLoad(false)
+    } finally {
+      setLoad(false);
     }
   };
 
   const body = (
     <div className="max-h-[70vh] overflow-y-auto p-4 border border-gray-300 dark:border-gray-600 rounded-lg shadow bg-white dark:bg-gray-900 w-full max-w-xl mx-auto space-y-4">
-      <h2 className="text-xl font-bold">Yangi blog qo‘shish</h2>
+      <h2 className="text-xl font-bold">Yangi loyiha qo‘shish</h2>
+
       <div>
         <label className="block text-sm font-medium mb-1">Sarlavha</label>
         <input
@@ -73,7 +74,7 @@ const BlogCreateModal = ({ submitHandler }: { submitHandler: (data: IBlog) => vo
           onChange={(e) => setTitle(e.target.value)}
           type="text"
           className="w-full border rounded p-2 bg-white dark:bg-gray-800 dark:text-white"
-          placeholder="Masalan: Next.js bilan SEO"
+          placeholder="Masalan: Portfolio vebsayti"
         />
       </div>
 
@@ -84,18 +85,29 @@ const BlogCreateModal = ({ submitHandler }: { submitHandler: (data: IBlog) => vo
           onChange={(e) => setDescription(e.target.value)}
           className="w-full border rounded p-2 bg-white dark:bg-gray-800 dark:text-white"
           rows={3}
-          placeholder="Maqola haqida qisqacha ma'lumot..."
+          placeholder="Loyiha haqida qisqacha ma'lumot..."
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Blog havolasi</label>
+        <label className="block text-sm font-medium mb-1">GitHub havolasi</label>
         <input
-          value={link}
-          onChange={(e) => setLink(e.target.value)}
+          value={githubLink}
+          onChange={(e) => setGithubLink(e.target.value)}
           type="url"
           className="w-full border rounded p-2 bg-white dark:bg-gray-800 dark:text-white"
-          placeholder="https://example.com/blog"
+          placeholder="https://github.com/username/project"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium mb-1">Demo havolasi</label>
+        <input
+          value={demoLink}
+          onChange={(e) => setDemoLink(e.target.value)}
+          type="url"
+          className="w-full border rounded p-2 bg-white dark:bg-gray-800 dark:text-white"
+          placeholder="https://project-demo.com"
         />
       </div>
 
@@ -114,13 +126,13 @@ const BlogCreateModal = ({ submitHandler }: { submitHandler: (data: IBlog) => vo
           <div className="mt-2">
             <Image
               src={imagePreview}
-              alt="Preview"
               height={300}
               width={500}
+              alt="Preview"
               className="h-40 w-full object-cover rounded"
             />
           </div>
-        )}  
+        )}
       </div>
 
       <button
@@ -139,4 +151,4 @@ const BlogCreateModal = ({ submitHandler }: { submitHandler: (data: IBlog) => vo
   );
 };
 
-export default BlogCreateModal;
+export default ProjectCreateModal;

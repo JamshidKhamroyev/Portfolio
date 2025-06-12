@@ -1,18 +1,18 @@
 "use client";
 
-import useAdmin from "@/hooks/use-admin";
-import { format } from "date-fns";
-import {
-  ExternalLink,
-  Github,
-  CalendarDays,
-  BadgeCheck,
-  FileText,
-  Trash2,
-  Loader,
-} from "lucide-react";
-import Image from "next/image";
 import { useState } from "react";
+import { format } from "date-fns";
+import Image from "next/image";
+import useAdmin from "@/hooks/use-admin";
+import {
+  BadgeCheck,
+  CalendarDays,
+  ExternalLink,
+  FileText,
+  Github,
+  Loader,
+  Trash2,
+} from "lucide-react";
 
 interface Props {
   _id: string;
@@ -22,27 +22,25 @@ interface Props {
   createdAt: Date;
   githubLink?: string;
   demoLink?: string;
+  deleteHandler?: () => void;
+  load?: boolean;
 }
 
 const ProjectCard = ({
   title,
   description,
-  _id,
   image,
   createdAt,
   githubLink,
   demoLink,
+  deleteHandler,
+  load,
 }: Props) => {
   const admin = useAdmin();
   const [hasImage, setHasImage] = useState(true);
-  const [load, setLoad] = useState(false)
-
-  const handleDelete = () => {
-    alert(`"${_id}" loyiha o‘chirildi`);
-  };
 
   return (
-    <div className="dark:bg-background bg-white border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white shadow-lg rounded-xl overflow-hidden flex flex-col h-full transition-transform cursor-pointer hover:shadow-2xl">
+    <div className="dark:bg-background bg-white border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white shadow-lg rounded-xl overflow-hidden flex flex-col h-full transition-transform hover:shadow-2xl">
       <div className="w-full h-56 relative bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
         {hasImage && image ? (
           <Image
@@ -60,6 +58,7 @@ const ProjectCard = ({
         )}
       </div>
 
+      {/* Content Section */}
       <div className="p-4 space-y-4 flex flex-col flex-1 justify-between">
         <div>
           <div className="flex items-center gap-2 text-sky-500 font-semibold text-lg mb-1">
@@ -72,9 +71,10 @@ const ProjectCard = ({
 
         <div className="flex items-center text-xs gap-2 text-gray-500 dark:text-gray-400">
           <CalendarDays size={16} />
-          Yar.: {format(createdAt, "dd-MMM-yyyy")}
+          Yar.: {format(new Date(createdAt), "dd-MMM-yyyy")}
         </div>
 
+        {/* Links */}
         {(githubLink || demoLink) ? (
           <div className="flex gap-4 mt-2">
             {githubLink && (
@@ -102,13 +102,22 @@ const ProjectCard = ({
           <p className="text-slate-500 dark:text-slate-300 text-sm">Havolalar yo‘q</p>
         )}
 
-        {admin.isAdmin && (
+        {admin.isAdmin && deleteHandler && (
           <button
-            onClick={handleDelete}
-            className="flex items-center gap-1 text-red-500 border justify-center py-2 rounded-sm border-red-400 cursor-pointer hover:bg-red-500 hover:text-white duration-300 text-sm mt-2 transition"
+            onClick={deleteHandler}
+            disabled={load}
+            className="flex items-center gap-1 text-red-500 border justify-center py-2 rounded-sm border-red-400 cursor-pointer hover:bg-red-500 hover:text-white duration-300 text-sm mt-2 disabled:opacity-60"
           >
-            {load && <Loader className="animate-spin h-5 w-5"/>}
-            <Trash2 size={16} /> O‘chirish
+            {load ? (
+              <>
+                <Loader className="animate-spin h-5 w-5" />
+                O‘chirilmoqda...
+              </>
+            ) : (
+              <>
+                <Trash2 size={16} /> O‘chirish
+              </>
+            )}
           </button>
         )}
       </div>

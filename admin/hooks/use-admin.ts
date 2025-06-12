@@ -9,7 +9,7 @@ interface useAdminProps {
 }
 
 const useAdmin = create<useAdminProps>((set) => ({
-    isAdmin: true,
+    isAdmin: false,
     url: "http://localhost:4040",
     key: "",
     changeKey: (key) => set({ key }),

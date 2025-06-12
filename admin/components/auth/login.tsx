@@ -19,7 +19,7 @@ const Login = () => {
     <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
       <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-xl w-[90%] max-w-md">
         <h2 className="text-xl font-bold text-center mb-4 text-slate-900 dark:text-white">
-          Maxsus kalit so'zni kiriting
+          Maxsus kalit so&apos;tzni kiriting
         </h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input

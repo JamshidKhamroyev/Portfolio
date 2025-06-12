@@ -12,7 +12,7 @@ const ProjectRouter = require("./routers/project-router")
 
 const limiter = rateLimit({
     windowMs: 1 * 60 * 1000,
-    max: 8,
+    max: 100,
     message: {
         success: false,
         message: "Juda ko‘p so‘rov yuborildi. Iltimos, keyinroq urinib ko‘ring."
@@ -21,9 +21,9 @@ const limiter = rateLimit({
     legacyHeaders: false 
 });
 
+app.use(cors())
 app.use(limiter)
 app.use(helmet())
-app.use(cors({ origin: process.env.FRONTEND_URL}))
 app.use(express.json({ limit: "5mb" }))
 app.use(express.urlencoded({ extended: true }))
 // Routers
