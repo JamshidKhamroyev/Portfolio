@@ -1,8 +1,6 @@
 "use client"
 
 import { CheckCircle, Code, Lightbulb } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { useRouter } from "next/navigation"
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import Link from "next/link"
@@ -26,7 +24,6 @@ const cardVariants = {
 }
 
 const HeroSection = () => {
-  const router = useRouter()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" }) // scrollga nisbatan triggering
 
