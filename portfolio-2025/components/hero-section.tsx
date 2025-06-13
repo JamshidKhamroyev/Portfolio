@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
+import Link from "next/link"
 
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -46,21 +47,21 @@ const HeroSection = () => {
             title: "Innovative Approach",
             desc: "I aim to solve problems effectively and creatively, applying an innovative approach to each project.",
             stat: "50+ I created a successful project.",
-            action: () => router.push("/projects"),
+            action: "/projects",
             btn: "More"
           }, {
             icon: <Code className="text-sky-500 text-4xl mb-4" />,
             title: "Full-stack Experience",
             desc: "I am a specialist with experience in the MERN Stack and building effective systems using modern technologies.",
             stat: "200+ I served customers.",
-            action: () => router.push("/about"),
+            action: "/about",
             btn: "More"
           }, {
             icon: <Lightbulb className="text-sky-500 text-4xl mb-4" />,
             title: "Problem Solving",
             desc: "I combine strategic thinking and creativity to solve every problem quickly and efficiently.",
             stat: "99% successfully completed projects.",
-            action: () => router.push("/contact"),
+            action: "/contact",
             btn: "Contact me"
           }].map((item, i) => (
             <motion.div
@@ -70,13 +71,13 @@ const HeroSection = () => {
               animate={isInView ? "visible" : "hidden"}
               whileHover="whileHover"
               variants={cardVariants}
-              className="max-w-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg shadow-md p-6"
+              className="max-w-sm justify-between flex-col flex items-start bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg shadow-md p-6"
             >
               {item.icon}
               <h3 className="text-xl font-semibold text-slate-700 dark:text-slate-100 mb-2">{item.title}</h3>
               <p className="text-slate-500 dark:text-slate-400 mb-4">{item.desc}</p>
               <p className="text-slate-600 dark:text-slate-300 mb-4 font-semibold">{item.stat}</p>
-              <Button onClick={item.action} size="sm">{item.btn}</Button>
+              <Link href={item.action} className="px-4 py-1.5 rounded-sm border dark:border-sky-400 dark:text-sky-400 dark:hover:bg-sky-400 dark:hover:text-white duration-300 dark:hover:shadow-md dark:hover:shadow-sky-500">{item.btn}</Link>
             </motion.div>
           ))}
         </div>

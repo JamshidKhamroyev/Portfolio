@@ -64,7 +64,7 @@ const Blog = () => {
 
   useEffect(() => {
     getAllBlogs();
-  }, [limit, getAllBlogs]);
+  }, [limit]);
 
   return (
     <>

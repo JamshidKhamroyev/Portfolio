@@ -82,7 +82,7 @@ const HomePage = () => {
           <div className="relative h-[400px] w-[400px]">
             <CurrentImage
               fill
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzMlWIewtcbAtE1ytUAVGlsWZ587UOwaUALA&s"
+              src="/profile.png"
               className="object-cover rounded-full dark:border-4 border-sky-400 shadow-lg shadow-sky-400"
             />
           </div>

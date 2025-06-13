@@ -37,7 +37,7 @@ const Blogs = () => {
 
   useEffect(() => {
     getBlogs()
-  }, [limit, getBlogs])
+  }, [limit])
 
   return (
     <div className="container mx-auto px-4 py-20">

@@ -65,7 +65,7 @@
 
     useEffect(() => {
       getProjects();
-    }, [limit, getProjects]);
+    }, [limit]);
 
     return (
       <>

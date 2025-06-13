@@ -43,7 +43,7 @@ const ProjectCreateModal = ({ submitHandler }: { submitHandler: (data: IProject)
       }
 
       const { data } = await axios.post(
-        `${admin.url}/api/projects/create`,
+        `${admin.url}/api/project/create`,
         formdata,
         {
           headers: {

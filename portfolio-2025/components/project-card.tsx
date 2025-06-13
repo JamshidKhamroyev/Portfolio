@@ -30,7 +30,7 @@ const ProjectCard = ({ title, description, image, createdAt, githubLink, demoLin
       <div className="space-y-4 p-2 border-t flex flex-col flex-1 justify-between">
         <div>
           <div className="flex items-center gap-2 text-sky-400 font-semibold text-lg">
-            <BadgeCheck size={18} /> {title}
+            <BadgeCheck size={18} /> {title.slice(0, 35)}...
           </div>
 
           <p className="line-clamp-3 text-justify dark:text-white text-black text-sm">
