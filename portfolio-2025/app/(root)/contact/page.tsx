@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { SendHorizonal, User2, MessageCircleWarning, Loader } from "lucide-react"
+import { SendHorizonal, User2, MessageCircleWarning } from "lucide-react"
 import { useState } from "react"
 
 const ContactPage = () => {
