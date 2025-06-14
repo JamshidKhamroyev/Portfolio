@@ -21,7 +21,7 @@ const limiter = rateLimit({
     legacyHeaders: false 
 });
 
-app.use(cors())
+app.use(cors({ origin: ["https://xamroyev.vercel.app", "https://admin-xamroyev.vercel.app"]}))
 app.use(limiter)
 app.use(helmet())
 app.use(express.json({ limit: "5mb" }))

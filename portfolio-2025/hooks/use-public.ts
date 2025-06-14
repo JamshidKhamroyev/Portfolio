@@ -5,7 +5,7 @@ export interface PublicProps {
 }
 
 export const Public = create<PublicProps>((set) => ({
-    url: "http://localhost:4040"
+    url: "https://portfolio-backend-64di.onrender.com"
 }))
 
 export default Public

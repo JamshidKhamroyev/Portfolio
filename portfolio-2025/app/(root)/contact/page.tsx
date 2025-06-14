@@ -65,7 +65,7 @@ const ContactPage = () => {
             className="bg-sky-500 hover:bg-sky-600 text-white py-2 px-6 rounded-md font-semibold transition"
           >
             Xabarni Yuborish
-            <Loader className="animate-spin h-5 w-5" />
+            {/* <Loader className="animate-spin h-5 w-5" /> */}
           </Button>
         </form>
       </div>

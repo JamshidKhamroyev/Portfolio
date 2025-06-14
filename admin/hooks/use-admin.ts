@@ -10,7 +10,7 @@ interface useAdminProps {
 
 const useAdmin = create<useAdminProps>((set) => ({
     isAdmin: false,
-    url: "http://localhost:4040",
+    url: "https://portfolio-backend-64di.onrender.com",
     key: "",
     changeKey: (key) => set({ key }),
     loginHandler: () => set({ isAdmin: true })
