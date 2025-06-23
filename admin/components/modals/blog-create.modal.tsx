@@ -64,7 +64,7 @@ const BlogCreateModal = ({ submitHandler }: { submitHandler: (data: IBlog) => vo
   };
 
   const body = (
-    <div className="max-h-[70vh] overflow-y-auto p-4 border border-gray-300 dark:border-gray-600 rounded-lg shadow bg-white dark:bg-gray-900 w-full max-w-xl mx-auto space-y-4">
+    <div className="max-h-[70vh] overflow-y-auto md:p-4 p-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow bg-white dark:bg-gray-900 max-md:w-full md:max-w-xl mx-auto space-y-4">
       <h2 className="text-xl font-bold">Yangi blog qo‘shish</h2>
       <div>
         <label className="block text-sm font-medium mb-1">Sarlavha</label>

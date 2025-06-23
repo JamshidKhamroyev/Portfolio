@@ -69,19 +69,19 @@ const Blog = () => {
   return (
     <>
       <BlogCreateModal submitHandler={submitHandler} />
-      <div className="p-4 space-y-6 w-[80vw]">
+      <div className="md:p-4 p-2 space-y-6 md:w-[80vw] w-[86vw]">
         <div className="flex items-center w-full justify-between border-b pb-4">
-          <div>
-            <h2 className="text-2xl font-bold">Bloglar</h2>
+          <div className="mr-1" >
+            <h2 className="md:text-2xl text-xl font-bold">Bloglar</h2>
             <p className="text-gray-600 dark:text-gray-400 text-sm">
               So‘nggi yozilgan maqolalaringiz ro‘yxati.
             </p>
           </div>
           <button
             onClick={() => useBlogModal.onOpen()}
-            className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-sm hover:bg-blue-700 transition text-sm"
+            className="flex items-center gap-2 bg-blue-600 text-white md:px-4 px-1 md:py-2 py-1 cursor-pointer rounded-sm hover:bg-blue-700 transition text-sm"
           >
-            <PlusCircle size={18} /> Yangi qo‘shish
+            <PlusCircle size={18} className="max-md:hidden" /> Yangi qo‘shish
           </button>
         </div>
 

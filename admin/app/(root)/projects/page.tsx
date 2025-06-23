@@ -71,7 +71,7 @@
       <>
         <ProjectCreateModal submitHandler={handleNewProject} />
 
-        <div className="p-6 space-y-6 w-[80vw]">
+        <div className="md:p-6 p-2 space-y-6 w-[80vw] max-md:w-[86vw]">
           <div className="flex justify-between border-b w-full items-center pb-4">
             <div>
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Loyihalar</h1>
@@ -83,7 +83,7 @@
               onClick={() => useProjectModal.onOpen()}
               className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-sm hover:bg-blue-700 transition text-sm"
             >
-              <Plus size={18} />
+              <Plus size={18} className="max-md:hidden" />
               Yangi loyiha
             </button>
           </div>

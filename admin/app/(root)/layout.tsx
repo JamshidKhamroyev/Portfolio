@@ -14,11 +14,11 @@ const Layout = ({ children }: { children: ReactNode }) => {
     <div className="w-screen relative min-h-screen">
       {admin.isAdmin ? (
         <div className="w-full flex justify-start items-start">
-          <div className="fixed top-0 left-0 md:w-[20vw] h-full border-r-2">
+          <div className="fixed top-0 left-0 md:w-[20vw] w-[14vw] h-full border-r-2">
             <Sidebar />
           </div>
 
-          <div className="md:ml-[20vw]">
+          <div className="md:ml-[20vw] ml-[14vw]">
               <NextTopLoader  
                 color="#155dfc "
                 initialPosition={0.08}

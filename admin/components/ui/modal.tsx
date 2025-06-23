@@ -22,7 +22,7 @@ const CustomModal = ({ isOpen, onClose, body }: Props) => {
           className={cn(
             "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
             "bg-white dark:bg-zinc-900 text-black dark:text-white",
-            "rounded-lg shadow-xl max-w-lg w-full z-50 p-6",
+            "rounded-lg shadow-xl max-w-lg z-50 p-6",
             "[&>button]:hidden"
           )}
         >
